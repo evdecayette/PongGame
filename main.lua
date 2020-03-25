@@ -39,7 +39,7 @@ function love.load()
 
    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
        fullscreen = false,
-       resizable = false,
+       resizable = true,
        vsync = true
 
    })
@@ -62,6 +62,11 @@ function love.load()
      end
 
     gameState = 'start' 
+end
+
+function love.resize(w,h)
+push:resize(w,h)
+
 end
 
 function love.update(dt)
@@ -221,7 +226,7 @@ function love.draw()
     elseif gameState == 'victory' then
         -- draw a victory message
         love.graphics.setFont(victoryFont)
-        love.graphics.printf("Player " .. tostring(winningPlayer) .. "' wins!", 0, 20, VIRTUAL_WIDTH, 'center')
+        love.graphics.printf("Player " .. tostring(winningPlayer) .. " wins!", 0, 20, VIRTUAL_WIDTH, 'center')
         love.graphics.setFont(smallFont)
         love.graphics.printf("Press Enter to serve!", 0, 42, VIRTUAL_WIDTH, 'center')
      elseif gameState == 'paly' then
